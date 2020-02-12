@@ -1,6 +1,7 @@
 from Card import Card
 import random
 from Player import Player
+from Layout import Layout
 
 
 class SevensGame:
@@ -12,6 +13,8 @@ class SevensGame:
         self.players = []
         self.generate_deck()
         self.layouts = []
+        self.current_player = None
+        self.possible_card_selections = []
 
     def generate_deck(self):
         for suit in self.suits.keys():
@@ -25,7 +28,7 @@ class SevensGame:
     def deal_cards(self):
         while len(self.deck) > 0:
             for p in self.players:
-                if(len(self.deck) > 0):
+                if len(self.deck) > 0:
                     p.add_to_deck(self.deck[len(self.deck)-1])
                     self.deck.pop()
                 else:
@@ -34,10 +37,26 @@ class SevensGame:
     def get_seven_of_diamonds(self):
         for p in self.players:
             if p.check_has_card("D7"):
-                layout = [p.get_card("D7")]
+                self.current_player = p
+                layout = Layout("D")
+                layout.add_to_deck(7)
                 self.layouts.append(layout)
                 p.get_deck().pop("D7")
+                break
 
+    def get_next_player(self):
+        if self.players.index(self.current_player)+1 > len(self.players):
+            index = 0
+        else:
+            index = self.players.index(self.current_player) + 1
+        self.current_player = self.players[index]
+
+    def start_game_process(self):
+        self.get_next_player()
+
+    # def check_layout_possible_selections(self):
+    #     for l in self.layouts:
+    #
 
 
 
