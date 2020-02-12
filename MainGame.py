@@ -19,6 +19,7 @@ def main():
         game.deal_cards()
         game.get_seven_of_diamonds()
 
+
 if __name__ == "__main__":
     main()
 
