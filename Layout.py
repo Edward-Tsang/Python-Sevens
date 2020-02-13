@@ -1,12 +1,21 @@
-from Card import Card
+import Utilities
 
 
 class Layout:
 
     def __init__(self, suit):
-        self.suit = suit
-        self.__numbers = []
+        self.__suit = suit
+        self.__faces = {}
 
-    def add_to_deck(self, card_number):
-        self.__numbers.append(card_number)
-        self.__numbers.sort()
+    def add_to_deck(self, card):
+        self.__faces[Utilities.get_card_key_value(card.get_face())] = card.get_face()
+        temp_faces = self.__faces.copy()
+        self.__faces.clear()
+        for i in sorted(temp_faces):
+            self.__faces[i] = temp_faces[i]
+
+    def get_faces(self):
+        return self.__faces
+
+    def get_suit(self):
+        return self.__suit

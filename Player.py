@@ -6,6 +6,7 @@ class Player:
     def __init__(self, name):
         self.__name = name
         self.__deck = {}
+        self.__playable_cards = []
 
     def get_deck(self):
         return self.__deck
@@ -27,3 +28,6 @@ class Player:
 
     def get_card(self, value):
         return self.__deck[value]
+
+    def get_playable_cards(self):
+        return self.__playable_cards

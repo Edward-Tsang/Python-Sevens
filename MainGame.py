@@ -18,6 +18,17 @@ def main():
 
         game.deal_cards()
         game.get_seven_of_diamonds()
+        while game.card_counter != 0:
+            game.check_layout_possible_selections()
+            game.check_if_player_has_cards()
+            if game.current_player_can_play():
+                game.play_players_card()
+            else:
+                game.get_next_player()
+        print("winners in order:")
+        for n in game.winners:
+            print(n)
+
 
 
 if __name__ == "__main__":
