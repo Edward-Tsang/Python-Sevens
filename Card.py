@@ -7,8 +7,8 @@ class Card:
     __value = 0
 
     def __init__(self, suit, face):
-        self.__suit = suit
-        self.__face = face
+        self.__suit: str = suit
+        self.__face: str = face
         switcher = {
             "1": 1,
             "2": 2,

@@ -1,17 +1,19 @@
 from Card import Card
+from typing import Dict
+from typing import List
 
 
 class Player:
 
     def __init__(self, name):
-        self.__name = name
-        self.__deck = {}
-        self.__playable_cards = []
+        self.__name: str = name
+        self.__deck: Dict[str, Card] = {}
+        self.__playable_cards: List[Card] = []
 
     def get_deck(self):
         return self.__deck
 
-    def set_deck(self, deck: []):
+    def set_deck(self, deck: List[Card]):
         self.__deck = deck
 
     def get_name(self):

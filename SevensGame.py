@@ -3,6 +3,8 @@ import Utilities
 from Player import Player
 from Layout import Layout
 import random
+from typing import List
+from typing import Dict
 
 
 class SevensGame:
@@ -11,14 +13,14 @@ class SevensGame:
 
     def __init__(self):
         self.deck = []
-        self.faces = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"}
-        self.suits = {"S": "Spades", "H": "Hearts", "C": "Clubs", "D": "Diamonds"}
-        self.players = []
+        self.faces: List[str] = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+        self.suits: Dict[str,str] = {"S": "Spades", "H": "Hearts", "C": "Clubs", "D": "Diamonds"}
+        self.players: List[Player] = []
         self.generate_deck()
-        self.layouts = {}
+        self.layouts: Dict[str,Layout] = {}
         self.current_player = None
-        self.possible_card_selections = []
-        self.winners = []
+        self.possible_card_selections: List[str] = []
+        self.winners:List[str] = []
 
     def generate_deck(self):
         for suit in self.suits.keys():

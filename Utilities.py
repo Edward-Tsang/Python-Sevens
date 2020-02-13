@@ -38,7 +38,7 @@ def get_card_below(suit, value):
 
 def get_card_key_value(value):
     switcher = {
-       "A": 1,
+        "A": 1,
         "2": 2,
         "3": 3,
         "4": 4,

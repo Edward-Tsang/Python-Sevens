@@ -1,11 +1,11 @@
 import Utilities
-
+from typing import Dict
 
 class Layout:
 
     def __init__(self, suit):
-        self.__suit = suit
-        self.__faces = {}
+        self.__suit: str = suit
+        self.__faces: Dict[int,str] = {}
 
     def add_to_deck(self, card):
         self.__faces[Utilities.get_card_key_value(card.get_face())] = card.get_face()
