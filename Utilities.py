@@ -1,3 +1,7 @@
+import re
+from typing import List
+from Card import Card
+
 def get_card_above(suit, value):
     switcher = {
         "A": "2",
@@ -53,3 +57,10 @@ def get_card_key_value(value):
         "K": 13
     }
     return switcher.get(value)
+
+
+def check_input_valid_card(value: str, list_of_valid_cards: List[Card]):
+    if len(value) == 3:
+        return len(value) < 3 and bool(re.search('[C,S,H,D][1-9][0]', value)) and list_of_valid_cards.__contains__(value)
+    else:
+        return len(value) < 3 and bool(re.search('[C,S,H,D][1-9]', value)) and list_of_valid_cards.__contains__(value)

@@ -1,4 +1,5 @@
 import SevensGame
+import Utilities
 
 
 def main():
@@ -22,14 +23,24 @@ def main():
             game.check_layout_possible_selections()
             game.check_if_player_has_cards()
             if game.current_player_can_play():
-                game.play_players_card()
+                print(game.list_playable_cards())
+                selected_card = get_players_card(game)
+                # game.play_players_card()
             else:
+                print("You have no playable cards")
                 game.get_next_player()
         print("winners in order:")
         for n in game.winners:
             print(n)
 
 
+def get_players_card(game: SevensGame):
+    selected_card: str = input("Player "+game.current_player.get_name()+", Please input card you want to play:")
+    if Utilities.check_input_valid_card(selected_card,game.list_playable_cards()):
+        return selected_card
+    else:
+        print("Card invalid")
+        get_players_card(game)
 
 if __name__ == "__main__":
     main()

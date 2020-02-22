@@ -18,7 +18,7 @@ class SevensGame:
         self.players: List[Player] = []
         self.generate_deck()
         self.layouts: Dict[str,Layout] = {}
-        self.current_player = None
+        self.current_player: Player = None
         self.possible_card_selections: List[str] = []
         self.winners:List[str] = []
 
@@ -100,6 +100,16 @@ class SevensGame:
         self.current_player.get_deck().pop(selected_card.get_suit()+selected_card.get_face())
         if len(self.current_player.get_deck()) == 0:
             self.winners.append(self.current_player.get_name())
+
+    def list_playable_cards(self):
+        cards:str = ""
+        index:int = 0
+        for c in self.possible_card_selections:
+            index += 1
+            cards += "["+c+"]"
+            if index != len(self.possible_card_selections):
+                cards += " "
+        return cards
 
     def add_new_layout(self, suit):
         layout = Layout(suit)
